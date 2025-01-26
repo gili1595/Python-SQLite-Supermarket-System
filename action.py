@@ -8,6 +8,7 @@ def main(args : list[str]):
         for line in inputfile:
             splittedline : list[str] = line.strip().split(", ")
             #TODO: apply the action (and insert to the table) if possible
+            
             #this all from the actions input file
             product_id = int(splittedline[0]) #gets the id of the product
             quantity = int(splittedline[1]) #gets the quantity of the action

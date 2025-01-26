@@ -50,14 +50,8 @@ def main(args : list[str]):
     if os.path.isfile("bgumart.db"):
         os.remove("bgumart.db")
         
-    #their implementaion  
     repo.__init__()
     repo.create_tables()
-    
-    #my idea: 
-    #   global repo
-    #   repo = Repository()
-    #   repo.create_tables()
     
     with open(inputfilename) as inputfile:
         for line in inputfile:

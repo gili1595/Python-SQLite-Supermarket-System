@@ -3,7 +3,10 @@ import inspect
 
 def orm(cursor, dto_type):
     # the following line retrieve the argument names of the constructor
-    args = inspect.getargspec(dto_type.__init__).args
+   # args = inspect.getargspec(dto_type.__init__).args //??
+    
+    args = list(inspect.signature(dto_type.__init__).parameters.keys()) # i changed this
+
 
     # the first argument of the constructor will be 'self', it does not correspond
     # to any database field, so we can ignore it.
