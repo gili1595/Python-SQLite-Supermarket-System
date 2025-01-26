@@ -3,25 +3,45 @@ import atexit
 from dbtools import Dao
  
 # Data Transfer Objects:
-class Employee(object):
-    #TODO: implement
-    pass
+class Employee:
+    def __init__(self, id, name, salary, branche):
+        super().__init__()
+        self.id = id 
+        self.name = name
+        self.salary = salary
+        self.branche = branche
+
  
-class Supplier(object):
-    #TODO: implement
-    pass
+class Supplier:
+    def __init__(self, id, name, contact_information):
+        super().__init__()
+        self.id = id
+        self.name = name
+        self.contact_information = contact_information
 
-class Product(object):
-    #TODO: implement
-    pass
+class Product:
+    def __init__(self, id, description, price, quantity):
+        super().__init__()
+        self.id = id
+        self.description = description
+        self.price = price
+        self.quantity = quantity
 
-class Branche(object):
-    #TODO: implement
-    pass
+class Branche:
+    def __init__(self, id, location, number_of_employees):
+        super().__init__()
+        self.id = id
+        self.location = location
+        self.number_of_employees = number_of_employees
 
-class Activitie(object):
-    #TODO: implement
-    pass
+
+class Activitie:
+    def __init__(self, product_id, quantity, activator_id, date):
+        super().__init__()
+        self.product_id = product_id
+        self.quantity = quantity
+        self.activator_id = activator_id
+        self.date = date
  
  
 #Repository
@@ -29,6 +49,13 @@ class Repository(object):
     def __init__(self):
         self._conn = sqlite3.connect('bgumart.db')
         #TODO: complete
+        self.employees = Dao(Employee, self._conn)
+        self.suppliers = Dao(Supplier, self._conn)
+        self.products = Dao(Product, self._conn)
+        self.branches = Dao(Branche, self._conn)
+        self.activities = Dao(Activitie, self._conn)
+        
+        
  
     def _close(self):
         self._conn.commit()
